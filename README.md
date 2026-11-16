@@ -1,3 +1,5 @@
+# Pupil Detector and Gaze Estimation
+
 What does that project do? 
 - Trains a pupil detection model on the Ev-eye dataset
 - The model predicts the pupil mask
