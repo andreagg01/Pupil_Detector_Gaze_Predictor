@@ -1,21 +1,3 @@
-"""Overlay the predicted pupil, fitted ellipse and estimated direction on a recorded video.
-
-    python annotate_pupil_video.py eye.mov best.keras eye_overlay.mp4
-    python annotate_pupil_video.py eye.mov best.keras eye_overlay.mp4 --roi 220 160 600 450
-
-Put benchmark_pupil_gaze.py beside this file. Use your TensorFlow environment with
-OpenCV, NumPy, SciPy, h5py, and FFmpeg/ffprobe (FFmpeg 7+ with libx264 and fsync).
-ROI is X Y WIDTH HEIGHT in the upright input video. The default is the entire frame.
-One recording should show the same eye in a fixed position relative to the camera.
-
-Optional --calibration eye.npz accepts K, dist, eye_center_scaled and gaze_rotation
-from the benchmark. If K was calibrated on the upright, uncropped phone image,
-include image_size=(width,height) for that image. Its aspect ratio must match
-the video. Without image_size, K is interpreted on the final 346x260 model grid.
-The camera axes are x right, y down, z into the scene. Without gaze_rotation the
-green arrow represents the projected optical axis in the camera view.
-"""
-
 import argparse
 import json
 import cv2
@@ -34,7 +16,23 @@ from utility_functions import (
 )
 
 
-HEIGHT, WIDTH = 260, 346
+def load_config(config_path: str = "config.json") -> dict:
+
+    path = Path(config_path)
+
+    if not path.exists():
+
+        raise FileNotFoundError(f"Configuration file not found: {config_path}")
+    
+    with open(path, "r", encoding="utf-8") as f:
+
+        return json.load(f)
+
+
+cfg = load_config()
+SEED = cfg["SEED"]
+HEIGHT = cfg["H"]
+WIDTH = cfg["W"]
 
 
 def inspect_video(path):

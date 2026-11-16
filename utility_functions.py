@@ -1,7 +1,3 @@
-import argparse
-from contextlib import contextmanager
-from itertools import cycle
-from pathlib import Path
 from time import perf_counter
 
 import cv2
