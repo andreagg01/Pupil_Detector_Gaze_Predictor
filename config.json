@@ -1,0 +1,19 @@
+{
+  "DATASET_PATH": "_/Data_davis_labelled_with_mask/",
+  "TEST_SESSION": "2_0_2",
+  "H": 260,
+  "W": 346,
+  "REQUIRE_GPU": true,
+  "VAL_FRACTION": 0.15,
+  "SEED": 42,
+  "PUPIL_VALUE": null,
+  "BATCH_SIZE": 4,
+  "EPOCHS": 50,
+  "BASE_FILTERS": 16,
+  "LEARNING_RATE": 0.001,
+  "THRESHOLD": 0.5,
+  "AUGMENT": true,
+  "OUTPUT_ROOT": "pupil_runs",
+  "CHUNK_FRAMES": 8,
+  "PROBE_ON_GPU": true
+}

@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+pupil_runs
+
+near_eye_pupil_segmentation.ipynb
+prototyping.ipynb
+
+benchmark.py
+
+eye_overlay.mp4
+eye_recording.mov
